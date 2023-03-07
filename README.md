@@ -20,7 +20,7 @@ Recruiter can register using email or google login to post job.
 - Add localtion in Google Maps
 - Post their job to sociasudo usermod -aG docker $USERl networking sites.
 
-## Portal
+## Portal 
 
 - Job Alerts
 - New Mobile Design
