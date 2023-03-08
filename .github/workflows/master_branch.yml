@@ -42,11 +42,10 @@ jobs:
             vkey: '${{ secrets.VERACODE_API_KEY }}'
   #          scantimeout: 15
 
-  delete-zip:
-    runs-on: ubuntu-latest
-    needs: zip-contents
-    steps:
-      - name: Delete zip file
-        run: |
-          rm OS-Job-Portal.zip
-
+# delete-zip:
+#   runs-on: ubuntu-latest
+#   needs: zip-contents
+#   steps:
+#     - name: Delete zip file
+#       run: |
+#         rm OS-Job-Portal.zip
