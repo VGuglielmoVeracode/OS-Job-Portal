@@ -23,7 +23,7 @@ jobs:
     steps:
       - name: Set Path for GIT
         run: |
-          echo "PATH=\"$PATH:/usr/local/git/bin\"" >> $GITHUB_ENV
+          echo "PATH=\"$PATH:/usr/bin/git\"" >> $GITHUB_ENV
 
   zip-contents:
     name: Archive
