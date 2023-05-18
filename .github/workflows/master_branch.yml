@@ -10,9 +10,14 @@ jobs:
   policy-scan:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/upload-artifact@v2
+        with:
+          name: OS-Job-Portal.zip
+          path: OS-Job-Portal.zip
       # - name: zip-contents
       #   run: |
       #     zip -r OS-Job-Portal.zip .
+      
       - name: Veracode Upload and Scan Action Step
         uses: veracode/veracode-uploadandscan-action@master
         id: upload_and_scan
