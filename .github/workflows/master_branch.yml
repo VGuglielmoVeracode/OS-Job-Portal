@@ -8,6 +8,7 @@ on:
 
 jobs:
   zip-contents:
+    name: Archive
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -22,6 +23,7 @@ jobs:
           path: OS-Job-Portal.zip
   
   policy-scan:
+      name: Veracode Static Analysis
       runs-on: ubuntu-latest
       needs: zip-contents
       steps:
