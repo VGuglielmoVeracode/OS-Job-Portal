@@ -6,31 +6,26 @@ on:
   pull_request:
     branches: [ master ]
 
-jobs:
-  zip-contents:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Zip contents
-        run: |
-          zip -r OS-Job-Portal.zip .
+ 
+#   zip-contents:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v2
+#       - name: Zip contents
+#         run: |
+#           zip -r OS-Job-Portal.zip .
       
-      - uses: actions/upload-artifact@v2
-        with:
-          name: OS-Job-Portal.zip
-          path: OS-Job-Portal.zip
-  
+#       - uses: actions/upload-artifact@v2
+#         with:
+#           name: OS-Job-Portal.zip
+#           path: OS-Job-Portal.zip
+jobs:  
   policy-scan:
       runs-on: ubuntu-latest
-      needs: zip-contents
-      steps:
-        - uses: actions/checkout@v2
-        - name: get archive
-          uses: actions/download-artifact@v2
-          with:
-            name: OS-Job-Portal.zip
-            path: .
+        - name: zip-contents
+          run: |
+            zip -r OS-Job-Portal.zip .
         - name: Veracode Upload and Scan Action Step
           uses: veracode/veracode-uploadandscan-action@master
           id: upload_and_scan
@@ -40,7 +35,7 @@ jobs:
             filepath: 'OS-Job-Portal.zip'
             vid: '${{ secrets.VERACODE_API_ID }}'
             vkey: '${{ secrets.VERACODE_API_KEY }}'
-  #          scantimeout: 15
+  #           scantimeout: 15
 
 # delete-zip:
 #   runs-on: ubuntu-latest
